@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cover Letter Updater
 
-## Getting Started
+A Next.js app to generate customized cover letters as PDFs, using markdown-it, jsPDF, and Tailwind CSS. Deployed on Netlify with GitHub Actions CI/CD.
 
-First, run the development server:
+## Features
+- Input fields for company name and position.
+- Dynamic date insertion (e.g., "June 24, 2025").
+- Markdown template (`public/cover_letter.md`) with placeholders (`{{company}}`, `{{position}}`, `{{date}}`).
+- PDF generation (A4, 25mm margins, 12pt font, 5mm line spacing, justified text, Roboto font with Times fallback).
+- Hosted on Netlify.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Setup
+1. **Clone Repository**:
+   ```bash
+   git clone https://github.com/username/coverletter-updater.git
+   cd coverletter-updater
+   ```
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run Locally**:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:3000`.
+4. **Test**:
+   - Enter company and position.
+   - Click "Update & Download PDF" to verify PDF output.
+5. **Build**:
+   ```bash
+   npm run build
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment (Netlify)
+1. **Link to Netlify**:
+   - Sign in to [Netlify](https://www.netlify.com/).
+   - Click **New site from Git** > Connect to GitHub > Select `coverletter-updater`.
+   - Set:
+     - Branch: `main`
+     - Build command: `npm run build`
+     - Publish directory: `out`
+   - Deploy.
+2. **GitHub Actions**:
+   - Pushes to `main` trigger automatic deployment (see `.github/workflows/deploy.yml`).
+3. **Access Site**:
+   - Visit the Netlify URL (e.g., `https://your-site-name.netlify.app`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
+- **Edit Template**: Modify `public/cover_letter.md`.
+- **Font**: Update font URL in `CoverLetterForm.jsx`.
+- **Justification**: Adjust `justificationThreshold` in `CoverLetterForm.jsx`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Future Features
+- User management with local storage.
+- Template viewer and rich text editor.
+- Save templates in local storage.
 
-## Learn More
+## Troubleshooting
+- **404 Errors**: Ensure `cover_letter.md` is in `public/` and accessible at `/cover_letter.md`.
+- **Font Issues**: Embed base64 font if CORS fails.
+- **Build Fails**: Check `npm install` and Next.js logs.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT License
