@@ -97,12 +97,12 @@ export function CoverLetterForm() {
     doc.setFont(fontLoaded ? "Roboto" : "times", "normal");
     doc.setFontSize(12);
     justifyText(doc, updatedContent, margin, margin, maxWidth, 12, 5);
-    doc.save("cover-letter.pdf");
+    doc.save("SyedNadeemHussain_Cover.pdf");
     setIsLoading(false);
   };
 
   return (
-    <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full h-full max-w-md">
       <h1 className="text-2xl font-bold mb-6 text-center">
         Cover Letter Updater
       </h1>
